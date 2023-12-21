@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# THIS SCRIPT DISPLAYS THE CONTENTS OF THE FILE `/ETC/PASSWD`.
+#   ONLY DISPLAYS THE USERNAME, USER ID, AND USER HOME DIRECTORY PATH.
+
+myfile="/etc/passwd"
+while IFS= read -r line
+do
+    echo "$line" | cut -d":" -f1,3,6
+done < "$myfile"

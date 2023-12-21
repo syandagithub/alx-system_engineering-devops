@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# THIS SCRIPT DISPLAYS THE CONTENT OF THE CURRENT DIRECTORY IN LIST FORMAT
+
+
+mylist=$(ls)
+
+for i in $mylist; do
+  echo "$i" | cut -d '-' -f2
+done

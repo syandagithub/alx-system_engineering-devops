@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# A SCRIPT THAT DISPLAYS BEST SCHOOL 10 TIMES USING WHILE
+
+i=1
+
+while [ $i -le 10 ]
+do
+    echo "Best School"
+    ((i++))
+done

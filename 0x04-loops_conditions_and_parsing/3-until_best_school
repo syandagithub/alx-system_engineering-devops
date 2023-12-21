@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# A SCRIPT THAT DISPLAYS BEST SCHOOL 10 TIMES USING UNTIL
+
+i=1
+
+until [ $i -gt 10 ]
+do
+    echo "Best School"
+    ((i++))
+done
