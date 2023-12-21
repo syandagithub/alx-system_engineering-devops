@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# THIS SCRIPT DISPLAYS 'TO INFINITY AND BEYOND' INDEFINITELY
+# REQUIREMENT: IN BETWEEN EACH ITERATION OF THE LOOP, ADD A SLEEP 2
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done

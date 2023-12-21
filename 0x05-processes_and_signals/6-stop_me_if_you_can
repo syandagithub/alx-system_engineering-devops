@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# THIS SCRIPT STOPS THE 4-TO_INFINITY_AND_BEYOND PROCESS
+# REQUIREMENT: YOU CANNOT USE KILL OR KILLALL
+
+pkill -f 4-to_infinity_and_beyond
