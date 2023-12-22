@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# THIS SCRIPT STOPS THE 7-HIGHLANDER PROCESS
+# REQUIREMENT: YOU CANNOT USE KILL OR KILL ALL
+
+pkill -f 7-highlander

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# THIS SCRIPT DISPLAYS ITS OWN PID
+
+echo $$
