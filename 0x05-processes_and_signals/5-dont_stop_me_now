@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# THIS SCRIPT STOPS THE 4-TO_INFINITY_AND_BEYOND PROCESS
-# REQUIREMENT: YOU MUST USE KILL
-
-kill "$(pgrep -f 4-to_infinity_and_beyond)"
