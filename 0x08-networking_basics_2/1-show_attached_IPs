@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# This script presents the currently active IPv4 addresses on the machine.
+# This script presents the currently active IPv4 addresses on the machin.
 
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | awk '{gsub(/inet (addr:)?/,""); print $1}'

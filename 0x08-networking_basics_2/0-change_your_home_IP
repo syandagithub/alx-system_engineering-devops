@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script sets up an Ubuntu server with the following configurations:
+# This script sets up an Ubuntu server with the following configuration:
 # - localhost is configured to resolve to 127.0.0.2
 # - facebook.com is configured to resolve to 8.8.8.8
 
