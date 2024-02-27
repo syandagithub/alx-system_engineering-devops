@@ -2,5 +2,6 @@
 # Installing the nginx server
 apt-get update
 apt-get -y nginx
+ufw allow "Ngix HTTP"
 echo "Hello World!" > /var/www/html/index.html
 service nginx start
