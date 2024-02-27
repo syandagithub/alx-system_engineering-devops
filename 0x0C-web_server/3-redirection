@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs nginx web server
+# Configs nginx web server
 
 apt-get update
 apt-get install -y nginx
