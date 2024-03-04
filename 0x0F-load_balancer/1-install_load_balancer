@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Installing the load balancer
+
+sudo apt-get update
+sudo apt-get -y install haproxy
+
+server_config="frontend syanda.tech-frontend
+    bind *:80
+    mode http
+    default_backend syanda.tech-backend
+backend syanda.tech-backend
+    balance roundrobin
+    server 483960-web-01 52.91.202.168:80 check
+    server 483960-web-02 100.26.247.158:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+if ! grep -q "ENABLED=1" /etc/default/haproxy; then
+    echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+fi
+
+sudo service haproxy restart
+
