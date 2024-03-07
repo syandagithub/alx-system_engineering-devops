@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # explaining dependent on task 1
 
-sed -i 's/80 default_server;/80 default_server;\nlisten 80;/g' /etc/nginx/sites-available/default
+#!/usr/bin/env bash
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
+rm /run/nginx.pid
