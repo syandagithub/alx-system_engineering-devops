@@ -1,30 +1,16 @@
 #!/usr/bin/env bash
 # Script which will display info of the subdomain
 
-query_dns() {
-    dig "$1"."$2" | awk '/ANSWER SECTION/ {getline; print $4}'
+print_domain_subdomain () {
+    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
-display_info() {
-    domain="$1"
-    subdomain="$2"
-
-    if [ -z "$subdomain" ]; then
-        subdomains=("www" "lb-01" "web-01" "web-02")
-    else
-        subdomains=("$subdomain")
-    fi
-
-    for sub in "${subdomains[@]}"; do
-        record_type=$(query_dns "$sub" "$domain")
-        echo "The subdomain $sub is a $record_type record and points to $(query_dns "$sub" "$domain")"
-    done
-}
-
-
-if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
-    echo "Usage: $0 domain [subdomain]"
-    exit 1
+if [ "$#" -eq 2 ]
+then
+    print_domain_subdomain "$2.$1" "$2"
+else
+    print_domain_subdomain "www.$1" "www"
+    print_domain_subdomain "lb-01.$1" "lb-01"
+    print_domain_subdomain "web-01.$1" "web-01"
+    print_domain_subdomain "web-02.$1" "web-02"
 fi
-
-display_info "$1" "$2"
