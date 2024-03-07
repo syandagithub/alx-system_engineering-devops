@@ -1,29 +1,30 @@
 #!/usr/bin/env bash
 # Script which will display info of the subdomain
 
-dns_config() {
-    local domain="$1"
-    local subdomain="$2"
+query_dns() {
+    dig "$1"."$2" | awk '/ANSWER SECTION/ {getline; print $4}'
+}
 
-    local script
-    script=$(dig "$subdomain"."$domain" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-    
-    if [ -z "$script" ]; then
-        echo "Unable to find DNS records for $subdomain.$domain"
-        return 1
+display_info() {
+    domain="$1"
+    subdomain="$2"
+
+    if [ -z "$subdomain" ]; then
+        subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        subdomains=("$subdomain")
     fi
 
-    echo "$subdomain $script" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+    for sub in "${subdomains[@]}"; do
+        record_type=$(query_dns "$sub" "$domain")
+        echo "The subdomain $sub is a $record_type record and points to $(query_dns "$sub" "$domain")"
+    done
 }
 
 # Main entry point
-if [ "$#" -eq 1 ]; then
-    for subdomain in "www" "lb-01" "web-01" "web-02"; do
-        dns_config "$1" "$subdomain"
-    done
-elif [ "$#" -eq 2 ]; then
-    dns_config "$1" "$2"
-else
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
     echo "Usage: $0 domain [subdomain]"
     exit 1
 fi
+
+display_info "$1" "$2"
