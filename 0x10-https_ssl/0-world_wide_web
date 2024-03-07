@@ -5,6 +5,7 @@ query_dns() {
     dig "$1"."$2" | awk '/ANSWER SECTION/ {getline; print $4}'
 }
 
+# Main function to display information about subdomains
 display_info() {
     domain="$1"
     subdomain="$2"
