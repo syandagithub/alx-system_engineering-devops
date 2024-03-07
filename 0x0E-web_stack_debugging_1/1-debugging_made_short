@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# configuring depeendent on task 1
+# explaining dependent on task 1
 
 sed -i 's/80 default_server;/80 default_server;\nlisten 80;/g' /etc/nginx/sites-available/default
 service nginx restart
