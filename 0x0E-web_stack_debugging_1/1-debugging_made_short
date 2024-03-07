@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # explaining dependent on task 1
-
-#!/usr/bin/env bash
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
 rm /run/nginx.pid
