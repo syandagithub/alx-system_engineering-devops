@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-
-'''
-    This module contains a function which returns sunscribers
-'''
+''' 0-subs.py '''
 import requests
 from sys import argv
 
