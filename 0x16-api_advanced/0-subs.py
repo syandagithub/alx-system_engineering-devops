@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+
 '''
-    this module contains a function which returns sunscribers
+    This module contains a function which returns sunscribers
 '''
 import requests
 from sys import argv
